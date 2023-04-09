@@ -1,20 +1,7 @@
 const express = require ('express')
 const router = express.Router()
-const { Note } = require('../models')
 
-router.post('/notes', (req, res) => {
-    const note = new Note({
-        titulo: req.body.titulo,
-        contenido: req.body.contenido,
-        fecha: new Date()
-    })
-note.save()
-.then(result => {
-    res.status(200).json(result)
-})
-.catch(err => {
-    res.status(500).json(err)
-})
-})
+router.use(require('./notesRoutes'))
+router.use(require('./userRoutes'))
 
 module.exports = router

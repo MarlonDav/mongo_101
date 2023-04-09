@@ -9,6 +9,14 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true
+    },
+    password:{
+        type: String,
+        required: true,
+    },
+    useType: {
+        type: String,
+        enum: ['admin','cliente']
     }
 }, {
     timestamps: true
