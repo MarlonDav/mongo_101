@@ -1,24 +1,10 @@
 const express = require ('express')
 const router = express.Router()
-const { Note } = require('../models')
+const { noteControl } = require ('../controllers')
 const { noteVal } = require('../validators')
+const { getAllNotes } = require('../controllers/noteControl')
 
-router.post('/notes', noteVal.create, (req, res) => {
-    const {titulo, contenido, fecha, user } = req.body 
-
-    const note = new Note({
-        titulo,
-        contenido,
-        fecha,
-        user,
-    })
-note.save()
-.then(result => {
-    res.status(200).json(result)
-})
-.catch(err => {
-    res.status(500).json(err)
-  })
-})
-
+router.post('/notes', noteVal.create, noteControl.create)
+  
+router.get('/notes', noteControl.getAllNotes)
 module.exports = router

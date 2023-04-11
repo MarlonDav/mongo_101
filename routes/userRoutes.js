@@ -1,24 +1,8 @@
 const express = require ('express')
 const router = express.Router()
-const { User } = require('../models')
+const { userControl } = require('../controllers')
+const { userVal } = require('../validators')
 
-router.post('/create/newuser', (req, res) => {
-
-    const {name, email, password } = req.body
-
-    const newUser = new User ({
-        name,
-        email,
-        password,
-    })
-    
-newUser.save()
-.then(result => {
-    res.status(200).json(result)
-})
-.catch(err => {
-    res.status(500).json(err)
-  })
-})
+router.post('/create/newuser', userVal.create, userControl.create)
 
 module.exports = router
