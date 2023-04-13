@@ -7,5 +7,12 @@ module.exports = {
             password: Joi.string().required(),
             email: Joi.string().email().required()
         })
+    }),
+    login: celebrate({
+        [Segments.BODY]:Joi.object().keys({
+            password: Joi.string().required(),
+            email: Joi.string().email().required()
+        })
     })
+
 } 

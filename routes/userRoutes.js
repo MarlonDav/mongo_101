@@ -5,4 +5,6 @@ const { userVal } = require('../validators')
 
 router.post('/create/newuser', userVal.create, userControl.create)
 
+router.post('/user/login', userVal.login, userControl.login )
+
 module.exports = router
