@@ -1,9 +1,9 @@
-const noteServi = require('./noteServi')
-const userServi = require('./userServi')
+
+const userServi = require('./userServi.js')
 
 
 module.exports = {
-noteServi,
+
 userServi
 }
     

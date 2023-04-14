@@ -1,6 +1,6 @@
-const Note = require('./Notes')
-const User = require('./User')
-module.exports = {
-    Note,
+import Product from './Product'
+import User from './User'
+export default {
+    Product,
     User, 
 }

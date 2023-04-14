@@ -1,8 +1,8 @@
-const userControl = require('./userControl')
-const noteControl = require('./noteControl')
+import userControl from './userControl.js'
+import productControl from './productControl.js'
 
 
-module.exports = {
+export {
     userControl,
-    noteControl
+    productControl
 }

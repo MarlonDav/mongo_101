@@ -1,10 +1,10 @@
-const express = require ('express')
-const router = express.Router()
-const { userControl } = require('../controllers')
-const { userVal } = require('../validators')
+import { Router } from 'express'
+const router = Router()
+import { userControl } from '../controllers/userControl.js'
+import { userVal } from '../validators/userVal.js'
 
 router.post('/create/newuser', userVal.create, userControl.create)
 
 router.post('/user/login', userVal.login, userControl.login )
 
-module.exports = router
+export default router

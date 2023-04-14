@@ -1,50 +1,57 @@
-const { User } = require('../models')
-const { userServi } =require('../services')
-const { comparePassword } = require('../utils')
+import { User } from '../models/User.js'
+import { userServi } from '../services/userServi.js'
+import { comparePassword, createToken } from '../utils/index.js'
 
 
 
 
 
-module.exports = {
-    create: async(req, res) =>{
-       
-        try{
-            const newUser = await userServi.create(req.body)
+export async function create(req, res) {
 
-            console.log(newUser)
+    try {
+        const newUser = await userServi.create(req.body)
 
-            if(!newUser){
-                //return res.status(401).json ({ error :'Nies crear la data'})
-                throw new Error('No se pudo crear el usuario')
-            }
+        console.log(newUser)
 
-            return res.status(200).json({ message: `Usuario creado con el id ${newUser._id }`})
-
-
-        } catch (error){
-            return res.status(400).json({error})
+        if (!newUser) {
+            //return res.status(401).json ({ error :'Nies crear la data'})
+            throw new Error('No se pudo crear el usuario')
         }
-    },
-    login: async (req, res) => {
-        console.log(req.body)
-        try {
-            const isUser = await userServi.getUserByEmail(req.body.email)
 
-            if(!isUser){
-                 throw new Error('No existe el usuario')
-            }
+        return res.status(200).json({ message: `Usuario creado con el id ${newUser._id}` })
 
-            const isvalidPassword = comparePassword(isUser.password, req.body.password)
-                if(!isvalidPassword){
-                    throw new Error ('Error en las credenciales')
-                }
-            
 
-            return res.status(200).json({ message: isUser })
+    } catch (error) {
+        return res.status(400).json({ error })
+    }
+}
+export async function login(req, res) {
+    console.log(req.body)
+    try {
+        const isUser = await userServi.getUserByEmail(req.body.email)
 
-        }catch (error){
-            return res.status(400).json({error: error.message})
+        if (!isUser) {
+            throw new Error('No existe el usuario')
         }
+
+        const isvalidPassword = comparePassword(isUser.password, req.body.password)
+        if (!isvalidPassword) {
+            throw new Error('Error en las credenciales')
+        }
+
+        const token = createToken(isUser)
+        if (!token) {
+            throw new Error('Error en el token')
+        }
+        const userWithoutPassword = {
+            email: isUser.email,
+            nombre: isUser.name,
+            token
+        }
+
+        return res.status(200).json({ user: userWithoutPassword })
+
+    } catch (error) {
+        return res.status(400).json({ error: error.message })
     }
 }

@@ -1,38 +1,36 @@
-const { User } = require('../models')
+import { User } from '../models/User.js'
 
-module.exports={
-    create: async(payload) => {
-          const {name, email, password } = payload
-            const user = new User ({
-                 name,
-                 email,
-                 password,
-            })
-            const newUser = await user.save()
-
+export async function create(payload) {
+  const { name, email, password } = payload
+  const user = new User({
+    name,
+    email,
+    password,
+  })
+  const newUser = await user.save()
 
 
 
-             if(!newUser){
-                //return res.status(401).json ({ error :'Nies crear la data'})
-                throw new Error('No se pudo crear el usuario')
-            }return newUser
 
-    },
-    getUserByEmail: async(email) => {
-        try {
-            const isExist = await User.find({ email })
-            if (!isExist){
-                throw new Error('No se encontro el email')
-            }
+  if (!newUser) {
+    //return res.status(401).json ({ error :'Nies crear la data'})
+    throw new Error('No se pudo crear el usuario')
+  } return newUser
 
-            return isExist[0]
+}
+export async function getUserByEmail(email) {
+  try {
 
-        }catch (error){
-            console.log(error)
-            throw new Error(error.message)
-        }
+    const [isExist] = await User.find({ email })
+
+    if (!isExist) {
+      throw new Error('No existe el usario')
     }
 
-    
+    return isExist
+
+  } catch (error) {
+    console.log(error)
+    throw new Error(error.message)
+  }
 }

@@ -1,20 +1,23 @@
 
-const express = require('express')
-const cors = require ('cors')
-const morgan = require('morgan')
+import express , { urlencoded, json } from 'express';
+import cors from 'cors';
+import morgan from 'morgan';
+import router from '../routes/index.js'
+
+
 const api = express()
 const PORT = process.env.PORT  || 4000  ;
 
 
 api.use(cors())
 api.use(morgan('dev'))
-api.use(express.urlencoded({ extended: true}))
-api.use(express.json({ extended: true }))
+api.use(urlencoded({ extended: true}))
+api.use(json({ extended: true }))
 
 api.get('/',(req, res) => res.send('Hola mundo'))
-api.use('/api/v1', require('../routes'))
+api.use('/api/v1', router )
 
-module.exports = { api, PORT }
+export { api, PORT }
 
 
 

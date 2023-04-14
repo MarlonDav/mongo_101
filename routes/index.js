@@ -1,7 +1,8 @@
-const express = require ('express')
+import express from 'express'
+
 const router = express.Router()
 
-router.use(require('./notesRoutes'))
-router.use(require('./userRoutes'))
 
-module.exports = router
+router.use(import ('./userRoutes.js'))
+
+export default router

@@ -10,4 +10,4 @@ const config = {
 }
 
 const URL = config[NODE_ENV]
-module.exports = URL
+export default URL

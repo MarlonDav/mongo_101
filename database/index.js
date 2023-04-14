@@ -1,9 +1,9 @@
-const mongoose = require('mongoose')
+import { connect } from 'mongoose'
 
-const { MONGO_URI } = require('../config')
+import { MONGO_URI } from '../config'
 
 
-mongoose.connect(MONGO_URI)
+connect(MONGO_URI)
 .then(()=> {
     console.log(`Conectado a la base de datos`)
 })

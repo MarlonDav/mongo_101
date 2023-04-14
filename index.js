@@ -1,7 +1,7 @@
-require('dotenv').config()
-require('./database')
+import ('dotenv').config()
+import ('./database')
 
 
-const { PORT, api } = require ('./api')
+import { PORT, api } from './api/index.js'
 
 api.listen(PORT, () => console.log(`Estas en vivo ${PORT}` ))

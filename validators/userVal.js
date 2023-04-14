@@ -1,18 +1,15 @@
-const { celebrate, Joi, Segments } = require('celebrate')
+import { celebrate, Joi, Segments } from 'celebrate'
 
-module.exports = {
-    create: celebrate({
-        [Segments.BODY]:Joi.object().keys({
-            name: Joi.string().required(),
-            password: Joi.string().required(),
-            email: Joi.string().email().required()
-        })
-    }),
-    login: celebrate({
-        [Segments.BODY]:Joi.object().keys({
-            password: Joi.string().required(),
-            email: Joi.string().email().required()
-        })
+export const create = celebrate({
+    [Segments.BODY]: Joi.object().keys({
+        name: Joi.string().required(),
+        password: Joi.string().required(),
+        email: Joi.string().email().required()
     })
-
-} 
+})
+export const login = celebrate({
+    [Segments.BODY]: Joi.object().keys({
+        password: Joi.string().required(),
+        email: Joi.string().email().required()
+    })
+}) 

@@ -1,7 +1,7 @@
-const noteVal = require('./noteVal')
-const userVal = require('./userVal')
 
-module.exports = {
-    noteVal,
+import userVal from './userVal.js'
+
+export default {
+    
     userVal
 }
