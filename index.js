@@ -1,5 +1,6 @@
-import ('dotenv').config()
-import ('./database')
+import ('./database/index.js')
+import dontenv from 'dotenv'
+dontenv.config()
 
 
 import { PORT, api } from './api/index.js'

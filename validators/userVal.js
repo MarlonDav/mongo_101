@@ -13,3 +13,10 @@ export const login = celebrate({
         email: Joi.string().email().required()
     })
 }) 
+
+const userVal = {
+    create,
+    login
+}
+
+export default userVal

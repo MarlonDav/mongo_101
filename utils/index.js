@@ -1,5 +1,7 @@
+import jwt from 'jsonwebtoken'
 import { compareSync } from 'bcrypt'
-import { sign } from 'jsonwebtoken'
+
+const { sign } = jwt
 
 export function comparePassword(hasPassword, reqPassword) {
     const match = compareSync(reqPassword, hasPassword)
