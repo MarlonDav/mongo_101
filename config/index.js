@@ -1,4 +1,4 @@
-const NODE_ENV = process.env.NODE_ENV || 'devolop'
+const NODE_ENV = process.env.NODE_ENV || 'develop'
 
 const config = {
     develop: {
@@ -10,4 +10,4 @@ const config = {
 }
 
 const URL = config[NODE_ENV]
-export default URL
+export { URL }

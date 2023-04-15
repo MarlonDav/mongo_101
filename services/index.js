@@ -1,9 +1,6 @@
 
-const userServi = require('./userServi.js')
+import userServi from "./userServi.js"
 
-
-module.exports = {
-
-userServi
+export {
+  userServi,
 }
-    

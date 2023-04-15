@@ -1,4 +1,4 @@
-import { User } from '../models/User.js'
+import { User } from '../models/index.js'
 
 export async function create(payload) {
   const { name, email, password } = payload
@@ -9,15 +9,13 @@ export async function create(payload) {
   })
   const newUser = await user.save()
 
-
-
-
   if (!newUser) {
     //return res.status(401).json ({ error :'Nies crear la data'})
     throw new Error('No se pudo crear el usuario')
   } return newUser
 
 }
+
 export async function getUserByEmail(email) {
   try {
 
@@ -34,3 +32,10 @@ export async function getUserByEmail(email) {
     throw new Error(error.message)
   }
 }
+
+const userServi = {
+  create,
+  getUserByEmail,
+}
+
+export default userServi
