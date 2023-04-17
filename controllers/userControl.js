@@ -1,10 +1,6 @@
-import { User } from '../models/User.js'
-import { userServi } from '../services/userServi.js'
+import { User } from '../models/index.js'
+import { userServi } from '../services/index.js'
 import { comparePassword, createToken } from '../utils/index.js'
-
-
-
-
 
 export async function create(req, res) {
 
@@ -14,7 +10,6 @@ export async function create(req, res) {
         console.log(newUser)
 
         if (!newUser) {
-            //return res.status(401).json ({ error :'Nies crear la data'})
             throw new Error('No se pudo crear el usuario')
         }
 
@@ -22,9 +17,11 @@ export async function create(req, res) {
 
 
     } catch (error) {
+        console.log(error)
         return res.status(400).json({ error })
     }
 }
+
 export async function login(req, res) {
     console.log(req.body)
     try {
@@ -55,3 +52,11 @@ export async function login(req, res) {
         return res.status(400).json({ error: error.message })
     }
 }
+
+
+const userControl = {
+    create,
+    login
+}
+
+export default userControl

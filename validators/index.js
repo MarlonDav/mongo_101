@@ -1,7 +1,7 @@
 
 import userVal from './userVal.js'
 
-export default {
+export {
     
     userVal
 }

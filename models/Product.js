@@ -1,7 +1,7 @@
-import mongoose from mongoose
+import mongoose from 'mongoose'
 
 const productSchema = new mongoose.Schema({
-    nombre: {
+    name: {
         type: String,
         required: true
     },
@@ -10,10 +10,15 @@ const productSchema = new mongoose.Schema({
         required: true 
 
     },
-    especificaciones:  {
+    detalles:  {
         type: String,
         required: true
     },
+
+    url:{
+        type: String,
+        required: true,
+    }
     
    
         
@@ -22,6 +27,6 @@ const productSchema = new mongoose.Schema({
     timestamps: true
 })
 
-const Product = mongoose.model('Product', notaSchema)
+const ProductModel = mongoose.model('Product', productSchema)
 
-export default  Product
+export  default { ProductModel } 

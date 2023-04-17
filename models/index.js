@@ -1,6 +1,7 @@
-import Product from './Product'
-import User from './User'
-export default {
-    Product,
+import ProductModel from './Product.js'
+import User from './User.js'
+
+export {
+    ProductModel,
     User, 
 }

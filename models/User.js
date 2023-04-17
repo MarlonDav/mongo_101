@@ -42,4 +42,4 @@ userSchema.pre('save', function(next){
 
 const User = model('User', userSchema)
 
-export default User
+export default { User }

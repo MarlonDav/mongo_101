@@ -1,9 +1,7 @@
-import { connect } from 'mongoose'
+import mongoose from 'mongoose'
+import { URL } from '../config/index.js'
 
-import { MONGO_URI } from '../config'
-
-
-connect(MONGO_URI)
+mongoose.connect(URL.MONGO_URI)
 .then(()=> {
     console.log(`Conectado a la base de datos`)
 })
