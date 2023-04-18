@@ -1,7 +1,6 @@
 
 import userVal from './userVal.js'
 
-export {
-    
+export {    
     userVal
 }

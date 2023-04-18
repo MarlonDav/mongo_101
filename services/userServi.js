@@ -37,4 +37,4 @@ const userServi = {
   getUserByEmail,
 }
 
-export default {userServi}
+export  {userServi}
