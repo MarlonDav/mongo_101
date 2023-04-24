@@ -14,8 +14,18 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+     category:{
+        type: String,
+        enum: ['audifonos', 'diademas', 'Aros', 'cargador', 'disco'],
+        required: true
+     },
 
-    url:{
+    price:{
+        type: Number,
+        required: true,
+    },
+
+    image:{
         type: String,
         required: true,
     }
@@ -27,6 +37,6 @@ const productSchema = new mongoose.Schema({
     timestamps: true
 })
 
-const ProductModel = mongoose.model('Product', productSchema)
+const Product = mongoose.model('Product', productSchema)
 
-export  default { ProductModel } 
+export  default  Product  

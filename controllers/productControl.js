@@ -5,21 +5,34 @@ export async function create(req, res) {
   try {
     const newProduct = await productServi.create(req.body)
 
-    console.log(newUser)
+    console.log(newProduct)
 
     if (!newProduct) {
         throw new Error('No se pudo crear el producto')
     }
 
-    return res.status(200).json({ message: `producto creado creado con el id ` })
+    return res.status(200).json({ message: `producto creado creado con el id ${newProduct._id}` })
 
 
 } catch (error) {
+  console.log(error)
     return res.status(400).json({ error })
 }
+
+
+}
+export async function getAllProducts(req, res) {
+  try{
+    const allproducts = await productServi.getAllProducts()
+    return res.status(200).json({message: allproducts})
+  }catch (error){
+    console.log(error)
+    return res.status(400).json({ error })
+  }
 }
 const productControl = {
   create,
+  getAllProducts
 }
 
   export default productControl  

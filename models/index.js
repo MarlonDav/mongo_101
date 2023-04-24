@@ -1,7 +1,7 @@
-import ProductModel from './Product.js'
+import Product from './Product.js'
 import User from './User.js'
 
 export {
-    ProductModel,
+    Product,
     User, 
 }
