@@ -1,4 +1,4 @@
-const NODE_ENV = process.env.NODE_ENV || 'develop'
+const NODE_ENV = process.env.NODE_ENV || 'production'
 
 const config = {
     develop: {
