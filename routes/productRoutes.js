@@ -5,7 +5,8 @@ import { productVal } from '../validators/index.js'
 const router = express.Router()
 
 router.get('/products',productControl.getAllProducts)
-router.get('/productid',productControl.getProductsById )
+
+router.get('/productid/:id',productControl.getProductsById )
 
 router.post('/create/newproduct', productVal.create, productControl.create)
 
