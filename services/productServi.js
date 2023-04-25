@@ -31,9 +31,22 @@ export async function getAllProducts() {
 
   }
 }
+export async function getProductsById(id) {
+  try {
+    const product = await Product.findById(id)
+    if(!product){
+      throw new Error('no existe el Producto')
+    }
+    return product
+  } catch (error){
+    console.log(error)
+    throw new Error(error.message)
+  }
+}
 const productServi = {
     create,
     getAllProducts,
+    getProductsById
 }
 
 export default productServi
