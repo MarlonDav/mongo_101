@@ -43,7 +43,9 @@ export async function getProductsById(id) {
     throw new Error(error.message)
   }
 }
-export async function getProductsByCat(category)
+export async function getProductsByCat(category){
+
+
   try {
     const product = await Product.findOne(category)
     if(!product){
@@ -53,6 +55,7 @@ export async function getProductsByCat(category)
   }catch (error){
     throw new Error(error.message)
   }
+}
 const productServi = {
     create,
     getAllProducts,
