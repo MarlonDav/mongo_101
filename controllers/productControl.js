@@ -44,7 +44,7 @@ export  async function getProductsById (req, res){
   }
 export async function getProductsByCat(req, res){
 
-  const { category } = req.params
+  const { category } = req.params.category
 
   try{
     const product = await productServi.getProductsByCat(category)

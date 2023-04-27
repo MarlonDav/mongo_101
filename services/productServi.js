@@ -47,7 +47,7 @@ export async function getProductsByCat(category){
 
 
   try {
-    const product = await Product.findOne(category)
+    const product = await Product.findOne({category: category})
     if(!product){
       throw new Error('no existe el producto')
     }
