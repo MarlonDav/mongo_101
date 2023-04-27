@@ -42,10 +42,22 @@ export  async function getProductsById (req, res){
       return res.status(400).json({ error: error.message })
     }
   }
+export async function getProductsByCat(req, res){
+
+  const { category } = req.params
+
+  try{
+    const product = await productServi.getProductsByCat(category)
+    return res.status(200).json({ message: product })
+  }catch(error){
+    return res.status(400).json({ error: error.message })
+  }
+}
 const productControl = {
   create,
   getAllProducts,
-  getProductsById
+  getProductsById,
+  getProductsByCat
 }
 
   export default productControl  

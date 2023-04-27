@@ -43,10 +43,21 @@ export async function getProductsById(id) {
     throw new Error(error.message)
   }
 }
+export async function getProductsByCat(category)
+  try {
+    const product = await Product.findOne(category)
+    if(!product){
+      throw new Error('no existe el producto')
+    }
+    return product
+  }catch (error){
+    throw new Error(error.message)
+  }
 const productServi = {
     create,
     getAllProducts,
-    getProductsById
+    getProductsById,
+    getProductsByCat
 }
 
 export default productServi

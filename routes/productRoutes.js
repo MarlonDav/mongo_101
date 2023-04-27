@@ -8,6 +8,8 @@ router.get('/products',productControl.getAllProducts)
 
 router.get('/productid/:id',productControl.getProductsById )
 
+router.get('/productcat/:category', productControl.getProductsByCat)
+
 router.post('/create/newproduct', productVal.create, productControl.create)
 
 export default router
