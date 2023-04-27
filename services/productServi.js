@@ -48,7 +48,7 @@ export async function getProductsByCat(category){
 
   try {
     const product = await Product.find({category: category})
-    if(!product){
+    if(!product.length){
       throw new Error('no existe el producto')
     }
     return product
