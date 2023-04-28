@@ -16,7 +16,6 @@ const productSchema = new mongoose.Schema({
     },
      category: {
         type: String,
-        enum: ['audifonos', 'diademas', 'Aros', 'cargador', 'disco'],
         required: true
      },
 
